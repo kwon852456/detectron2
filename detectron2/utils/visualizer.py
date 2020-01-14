@@ -287,7 +287,7 @@ class VisImage:
         try:
             import numexpr as ne  # fuse them with numexpr
 
-            visualized_image = ne.evaluate("img * 0 + rgb * (alpha / 255.0)")
+            visualized_image = ne.evaluate("img * (1 - alpha / 255.0) + rgb * (alpha / 255.0)") 
         except ImportError:
             alpha = alpha.astype("float32") / 255.0
             visualized_image = img * (1 - alpha) + rgb * alpha
