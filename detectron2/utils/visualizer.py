@@ -589,12 +589,13 @@ class Visualizer:
         for i in range(num_instances):
             color = assigned_colors[i]
             if boxes is not None:
-                self.draw_box(boxes[i], edge_color=color)
+                pass
+                #self.draw_box(boxes[i], edge_color=color)
 
             if masks is not None:
                 for segment in masks[i].polygons:
                     self.draw_polygon(segment.reshape(-1, 2), color, alpha=alpha)
-
+'''
             if labels is not None:
                 # first get a box
                 if boxes is not None:
@@ -610,6 +611,7 @@ class Visualizer:
                     horiz_align = "center"
                 else:
                     continue  # drawing the box confidence for keypoints isn't very useful.
+
                 # for small objects, draw text at the side to avoid occlusion
                 instance_area = (y1 - y0) * (x1 - x0)
                 if (
@@ -636,6 +638,7 @@ class Visualizer:
                     font_size=font_size,
                 )
 
+'''
         # draw keypoints
         if keypoints is not None:
             for keypoints_per_instance in keypoints:
